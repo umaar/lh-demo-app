@@ -5,15 +5,24 @@
     "extends": "./node_modules/@umaar/personal-eslint-config/rules.json"
   },
   "devDependencies": {
+    "@lhci/cli": "^0.7.1",
+    "@lhci/server": "^0.7.1",
     "@umaar/personal-eslint-config": "^1.0.5",
+    "sqlite3": "^5.0.2",
     "xo": "^0.38.2"
   },
   "scripts": {
     "test": "./node_modules/.bin/xo",
-    "start": "node index.js"
+    "start": "node index.js",
+    "lighthouse": "npx lhci autorun --collect.numberOfRuns=1 --collect.startServerCommand=\"npm start\" --collect.url=\"http://localhost:3000\" --upload.target=temporary-public-storage",
+    "lighthouse-local-server": "node_modules/@lhci/cli/src/cli.js server --storage.storageMethod=sql --storage.sqlDialect=sqlite --storage.sqlDatabasePath=./lighthouse-server-db.sql",
+    "lighthouse-wizard": "node_modules/@lhci/cli/src/cli.js wizard"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "nunjucks": "^3.2.3"
+    "lighthouse": "^7.3.0",
+    "nunjucks": "^3.2.3",
+    "puppeteer-core": "^8.0.0"
   }
 }

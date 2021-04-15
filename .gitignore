@@ -58,8 +58,10 @@ logs
 npm-debug.log
 
 
-# Sublime specific #
-####################
 sftp-config*
 *.sublime-*
 node_modules
+.env
+secret.md
+*.html
+.lighthouseci
