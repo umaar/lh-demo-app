@@ -9,6 +9,11 @@
     "xo": "^0.38.2"
   },
   "scripts": {
-    "test": "./node_modules/.bin/xo"
+    "test": "./node_modules/.bin/xo",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.3"
   }
 }
