@@ -17,7 +17,7 @@
     "lighthouse": "npx lhci autorun --collect.numberOfRuns=1 --collect.startServerCommand=\"npm start\" --collect.url=\"http://localhost:3000\" --upload.target=temporary-public-storage",
     "lighthouse-local-server": "node_modules/@lhci/cli/src/cli.js server --storage.storageMethod=sql --storage.sqlDialect=sqlite --storage.sqlDatabasePath=./lighthouse-server-db.sql",
     "lighthouse-wizard": "node_modules/@lhci/cli/src/cli.js wizard",
-    "lighthouse-github-action": "npx lhci autorun --collect.settings.configPath=custom-audits/custom-config.js --collect.numberOfRuns=1 --collect.startServerCommand=\"npm start\" --collect.url=\"http://localhost:3000\" --upload.target=lhci --upload.serverBaseUrl=\"https://aqueous-tor-60755.herokuapp.com\" --upload.token=\"75d3592c-f415-4b00-b727-afda191ddd83\""
+    "lighthouse-github-action": "npx lhci autorun --collect.settings.configPath=custom-audits/custom-config.js --collect.numberOfRuns=1 --collect.startServerCommand=\"npm start\" --collect.url=\"http://localhost:3000\" --upload.target=lhci --upload.serverBaseUrl=\"https://aqueous-tor-60755.herokuapp.com\" --upload.token=\"75d3592c-f415-4b00-b727-afda191ddd83\" --assert.assertions.memory-usage=error"
   },
   "dependencies": {
     "dotenv": "^8.2.0",
