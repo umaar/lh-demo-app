@@ -1,0 +1,14 @@
+{
+  "name": "lh-demo-app",
+  "private": true,
+  "xo": {
+    "extends": "./node_modules/@umaar/personal-eslint-config/rules.json"
+  },
+  "devDependencies": {
+    "@umaar/personal-eslint-config": "^1.0.5",
+    "xo": "^0.38.2"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/xo"
+  }
+}
