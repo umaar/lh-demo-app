@@ -1,27 +1,32 @@
-name: Node CI
+name: Run Lighthouse CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  build:
+  lhci:
+    name: Lighthouse CI
 
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - name: Use latest Node.js
+        uses: actions/setup-node@v1
         with:
           node-version: '*'
 
       - name: Cache node modules
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
-          path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-build-${{ env.cache-name }}-
-            ${{ runner.OS }}-build-
-            ${{ runner.OS }}-
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
 
-      - run: npm install
-      - run: npm test
+      - name: npm ci
+        run: npm ci
+
+      - name: run Lighthouse CI
+        env:
+          LHCI_GITHUB_APP_TOKEN: ${{ secrets.LHCI_GITHUB_APP_TOKEN }}
+        run: |
+          npm run lighthouse-github-action || echo "LHCI failed!"
