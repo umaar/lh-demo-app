@@ -5,11 +5,11 @@
     "extends": "./node_modules/@umaar/personal-eslint-config/rules.json"
   },
   "devDependencies": {
-    "@lhci/cli": "^0.7.1",
-    "@lhci/server": "^0.7.1",
+    "@lhci/cli": "^0.7.2",
+    "@lhci/server": "^0.7.2",
     "@umaar/personal-eslint-config": "^1.0.5",
     "sqlite3": "^5.0.2",
-    "xo": "^0.38.2"
+    "xo": "^0.39.1"
   },
   "scripts": {
     "test": "./node_modules/.bin/xo",
@@ -20,10 +20,9 @@
     "lighthouse-github-action": "npx lhci autorun --collect.settings.configPath=custom-audits/custom-config.js --collect.numberOfRuns=1 --collect.startServerCommand=\"npm start\" --collect.url=\"http://localhost:3000\" --upload.target=lhci --upload.serverBaseUrl=\"https://morning-journey-92373.herokuapp.com\" --upload.token=\"121ae208-46ad-4159-9322-dfcbe47b1fb1\" --assert.assertions.memory-usage=error"
   },
   "dependencies": {
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "lighthouse": "^7.3.0",
+    "lighthouse": "^7.4.0",
     "nunjucks": "^3.2.3",
-    "puppeteer-core": "^8.0.0"
+    "puppeteer-core": "^9.1.0"
   }
 }

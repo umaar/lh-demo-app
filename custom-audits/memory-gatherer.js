@@ -1,11 +1,3 @@
-require('dotenv').config();
-
-function sleep(ms = 1000) {
-	return new Promise(resolve => {
-		setTimeout(resolve, ms);
-	});
-}
-
 const Gatherer = require('lighthouse').Gatherer;
 const Puppeteer = require('puppeteer-core');
 
@@ -39,18 +31,9 @@ class MemoryGatherer extends Gatherer {
 		const {driver} = options;
 		const {page} = await connect(driver);
 
-		const currentURL = page.url();
-		// This is a hack!
-		if (currentURL.startsWith(process.env.LOGIN_URL)) {
-			await page.type('#username', process.env.USERNAME, {delay: 16});
-			await sleep();
-			await page.click('#button-username');
-			await sleep();
-			await page.type('#password', process.env.PASSWORD, {delay: 16});
-			await sleep();
-			await page.click('#button-password');
-			await sleep(6000);
-		}
+		// You could interact with puppeteer directly here
+		// await page.click('#link');
+		// const currentURL = page.url();
 
 		const usedJSHeapSize = await page.evaluate(() => {
 			return performance.memory.usedJSHeapSize; // eslint-disable-line no-undef
